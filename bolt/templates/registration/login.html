@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <title></title>
+  {% load static %}
+  <link crossorigin="anonymous" href="{% static 'lib/bootstrap/dist/css/bootstrap.min.css' %}"
+    integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href="{% static 'bolt/site.css' %}" />
+  <script crossorigin="anonymous" integrity="sha384-tsQFqpEReu7ZLhBV2VZlAu7zcOV+rXbYlF2cqB8txI/8aZajjp4Bqd+V6D5IgvKT"
+    src="{% static 'lib/jquery/dist/jquery-3.3.1.min.js' %}"></script>
+  <script crossorigin="anonymous" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+    src="{% static 'lib/bootstrap/dist/js/bootstrap.min.js' %}"></script>
+  <style>
+    html,
+    body {
+      height: 100%;
+    }
+
+    body {
+      display: -ms-flexbox;
+      display: -webkit-box;
+      display: flex;
+      -ms-flex-align: center;
+      -ms-flex-pack: center;
+      -webkit-box-align: center;
+      align-items: center;
+      -webkit-box-pack: center;
+      justify-content: center;
+      padding-top: 40px;
+      padding-bottom: 40px;
+      background-color: #f5f5f5;
+    }
+
+    .form-signin {
+      width: 100%;
+      max-width: 330px;
+      padding: 15px;
+      margin: 0 auto;
+    }
+
+    .form-signin .checkbox {
+      font-weight: 400;
+    }
+
+    .form-signin .form-control {
+      position: relative;
+      box-sizing: border-box;
+      height: auto;
+      padding: 10px;
+      font-size: 16px;
+    }
+
+    .form-signin .form-control:focus {
+      z-index: 2;
+    }
+
+    .form-signin input[type="email"] {
+      margin-bottom: -1px;
+      border-bottom-right-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+
+    .form-signin input[type="password"] {
+      margin-bottom: 10px;
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+    }
+  </style>
+</head>
+
+<body class="text-center">
+  <div class="container-fluid">
+    <div class="text-center">
+      <h1 class="display-4">施工相片重複比對系統</h1>
+    </div>
+    <form class="form-signin" method="post" action="{% url 'login' %}">
+      {% csrf_token %}
+      <!-- <label for="inputEmail" class="sr-only">帳號</label>
+      <input type="email" id="inputEmail" class="form-control" placeholder="帳號" required autofocus> -->
+      <div class="form-group">
+        {{ form.username.label_tag }}
+        <br>
+        {{ form.username }}
+      </div>
+      <!-- <label for="inputPassword" class="sr-only">密碼</label>
+      <input type="password" id="inputPassword" class="form-control" placeholder="密碼" required> -->
+      <div class="form-group">
+        {{ form.password.label_tag }}
+        <br>
+        {{ form.password }}
+      </div>
+      <div>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">登入</button>
+        <!-- <input type="submit" value="登入" /> -->
+        <input type="hidden" name="next" value="{{ next }}" />
+      </div>
+    </form>
+    {% if form.errors %}
+    <br>
+    <p class="text-danger">帳號或密碼錯誤</p>
+    <br>
+    {% endif %}
+    <hr />
+    <footer>
+      <p class="text-right">程式人員：400-6529夏唯倫</p>
+    </footer>
+  </div>
+</body>
+
+</html>
